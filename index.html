@@ -14,16 +14,16 @@
 
     <style>
         :root {
-            --primary-color: #203e5f; /* Deep Academic Blue */
-            --accent-color: #2980b9;  /* Brighter Blue for links */
+            --primary-color: #203e5f; 
+            --accent-color: #2980b9;  
             --text-color: #333333;
             --bg-color: #ffffff;
             --sidebar-bg: #f8f9fa;
             --border-color: #e9ecef;
             --meta-color: #666;
+            --sidebar-width: 300px;
         }
 
-        /* --- Global Reset & Typography --- */
         * { box-sizing: border-box; }
         
         body {
@@ -32,7 +32,7 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
-            line-height: 1.8;
+            line-height: 1.7;
             font-size: 16px;
         }
 
@@ -43,11 +43,10 @@
         }
         
         h3 {
-            font-size: 1.1rem;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
             font-weight: 700;
-            color: #444;
         }
 
         a {
@@ -63,29 +62,44 @@
 
         /* --- Layout Grid --- */
         .wrapper {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- Sidebar (Left Column) --- */
+        @media (min-width: 992px) {
+            .wrapper {
+                flex-direction: row;
+                min-height: 100vh;
+            }
+        }
+
+        /* --- Sidebar --- */
         aside {
             background-color: var(--sidebar-bg);
-            padding: 40px 30px;
-            border-right: 1px solid var(--border-color);
+            padding: 40px 20px;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
+        }
+
+        @media (min-width: 992px) {
+            aside {
+                width: var(--sidebar-width);
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                border-bottom: none;
+                border-right: 1px solid var(--border-color);
+                overflow-y: auto;
+                flex-shrink: 0;
+            }
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
@@ -93,8 +107,12 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
+        @media (min-width: 992px) {
+            .profile-img { width: 180px; height: 180px; }
+        }
+
         .name-title h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 5px;
             font-weight: 700;
         }
@@ -104,61 +122,61 @@
             font-size: 0.95rem;
             color: #666;
             margin-bottom: 20px;
-            line-height: 1.4;
         }
 
+        /* --- Responsive Nav --- */
         .nav-menu {
-            margin-top: 20px;
+            margin-top: 10px;
             width: 100%;
-            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        @media (min-width: 992px) {
+            .nav-menu {
+                flex-direction: column;
+                text-align: left;
+                margin-top: 20px;
+                gap: 0;
+            }
         }
         
         .nav-menu a {
-            display: block;
-            padding: 8px 0;
+            padding: 5px 0;
             color: #555;
             font-family: 'Lato', sans-serif;
             font-weight: 600;
-            border-bottom: 1px solid transparent;
+            font-size: 0.9rem;
         }
         
-        .nav-menu a:hover {
-            color: var(--primary-color);
-            border-bottom: 1px solid var(--border-color);
-            text-decoration: none;
+        @media (min-width: 992px) {
+            .nav-menu a {
+                display: block;
+                padding: 8px 0;
+                border-bottom: 1px solid transparent;
+            }
+            .nav-menu a:hover {
+                color: var(--primary-color);
+                border-bottom: 1px solid var(--border-color);
+                text-decoration: none;
+            }
         }
 
         .sidebar-links {
-            margin-top: 30px;
+            margin-top: 20px;
             display: flex;
-            gap: 15px;
-            justify-content: center;
+            gap: 20px;
         }
 
         .sidebar-links a {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--primary-color);
-        }
-        
-        .cv-button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 8px 20px;
-            border: 1px solid var(--primary-color);
-            border-radius: 4px;
-            font-family: 'Lato', sans-serif;
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: var(--primary-color);
-        }
-        
-        .cv-button:hover {
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
         }
         
         .contact-info {
+            display: none; /* Hidden on mobile to save space */
             font-family: 'Lato', sans-serif;
             font-size: 0.85rem;
             width: 100%;
@@ -169,6 +187,10 @@
             color: #666;
         }
 
+        @media (min-width: 992px) {
+            .contact-info { display: block; }
+        }
+
         .contact-info p {
             margin: 10px 0;
             display: flex;
@@ -176,54 +198,56 @@
             gap: 10px;
         }
 
-        /* --- Main Content (Right Column) --- */
+        /* --- Main Content --- */
         main {
-            padding: 60px 80px;
-            max-width: 1000px;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 992px) {
+            main {
+                padding: 60px 60px;
+                margin: 0;
+            }
         }
 
         section {
-            margin-bottom: 60px;
-            scroll-margin-top: 40px;
+            margin-bottom: 50px;
+            scroll-margin-top: 20px;
         }
 
         h2.section-title {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1.2rem;
             color: #555;
         }
 
-        /* --- Bio Text --- */
         .bio-text {
             font-size: 1.05rem;
             color: #444;
-            text-align: justify;
         }
 
-        /* --- Interests Tags --- */
-        .interests-container {
-            margin-top: 20px;
-        }
-        
+        /* --- Tags --- */
         .interests-header {
             font-family: 'Lato', sans-serif;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin: 20px 0 10px 0;
             display: block;
-            color: #666;
+            color: #888;
         }
 
         .tag-cloud {
             list-style: none;
             padding: 0;
-            margin: 0 0 20px 0;
+            margin: 0;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -238,65 +262,49 @@
             font-size: 0.85rem;
         }
 
-        /* --- Publication List --- */
+        /* --- Publications --- */
         .pub-list {
             list-style: none;
             padding: 0;
         }
 
         .pub-item {
-            margin-bottom: 35px;
-            padding-left: 20px;
-            text-indent: -20px; /* Hanging indent */
+            margin-bottom: 30px;
         }
 
         .pub-title {
             font-weight: 700;
             color: var(--primary-color);
-            font-size: 1.05rem;
-        }
-
-        .pub-authors {
-            color: #444;
+            display: block;
+            margin-bottom: 5px;
         }
 
         .me {
             font-weight: 700;
             text-decoration: underline;
-            text-decoration-color: #bbb;
+            text-decoration-color: #ccc;
         }
 
-        .pub-journal {
-            font-style: italic;
-            color: #666;
-        }
-
-        /* Media Coverage Styles */
         .media-block {
-            display: block;
-            margin-top: 8px;
-            padding: 8px 15px;
+            margin-top: 10px;
+            padding: 10px;
             background-color: #f9f9f9;
-            border-left: 3px solid #ccc;
+            border-left: 3px solid #ddd;
             font-size: 0.9rem;
-            text-indent: 0; /* Reset hanging indent */
             color: #555;
         }
 
-        .media-label {
-            font-family: 'Lato', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: #888;
-            margin-right: 5px;
+        /* --- Responsive Table --- */
+        .table-container {
+            width: 100%;
+            overflow-x: auto; /* Allows horizontal scroll on small screens */
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* --- Teaching Table --- */
         .teaching-table {
             width: 100%;
+            min-width: 500px; /* Ensures table doesn't squish too much */
             border-collapse: collapse;
-            margin-bottom: 30px;
             font-size: 0.95rem;
         }
 
@@ -310,37 +318,8 @@
             font-family: 'Lato', sans-serif;
             background-color: #f8f9fa;
             color: #555;
-            font-weight: 700;
-        }
-        
-        .teaching-list {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        .teaching-list li {
-            margin-bottom: 5px;
-            color: #444;
         }
 
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            .wrapper {
-                grid-template-columns: 1fr;
-            }
-            aside {
-                position: relative;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                padding: 40px 20px;
-            }
-            main {
-                padding: 40px 20px;
-            }
-            .sidebar-links {
-                margin-top: 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -366,8 +345,6 @@
             <a href="mailto:minkshin@cityu.edu.hk" title="Email"><i class="fas fa-envelope"></i></a>
             <a href="https://scholar.google.com/citations?user=K2Q3HlcAAAAJ&hl=en&oi=sra" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
         </div>
-
-
 	
         <div class="contact-info">
             <p><i class="fas fa-map-marker-alt"></i> 10-212, Lau Ming Wai Academic Building, City University of Hong Kong</p>
@@ -412,29 +389,29 @@
             <h2 class="section-title">Publications</h2>
             <ul class="pub-list">
                 <li class="pub-item">
-                    <span class="pub-title">"The Adoption and Efficacy of Large Language Models in U.S. Consumer Financial Complaints."</span><br>
+                    <span class="pub-title">"The Adoption and Efficacy of Large Language Models in U.S. Consumer Financial Complaints."</span>
                     <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, & Jiwoong Shin</span><br>
                     <span class="pub-journal"><strong>Nature Human Behaviour</strong></span>, Accepted.
                     <div class="media-block">
-                        <span class="media-label">Media Coverage:</span> The Economist, Yale Insights, Ground News, Tech Xplore.
+                        <strong>Media:</strong> The Economist, Yale Insights, Ground News, Tech Xplore.
                     </div>
                 </li>
                 
                 <li class="pub-item">
-                    <span class="pub-title">"Superhuman artificial intelligence can improve human decision-making by increasing novelty"</span><br>
+                    <span class="pub-title">"Superhuman artificial intelligence can improve human decision-making by increasing novelty"</span>
                     <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, Bas van Opheusden, & Thomas L. Griffiths</span><br>
                     <span class="pub-journal"><strong>PNAS</strong></span>, 2023.
                     <div class="media-block">
-                        <span class="media-label">Policy & Media:</span> United Nations Development Programme Human Development Report, Fortune, Forbes, Scientific American, New Scientist, Yahoo News, Tech Times, Tech Xplore, Psychology Today, and many more.
+                        <strong>Policy & Media:</strong> UNDP Human Development Report, Fortune, Forbes, Scientific American, and more.
                     </div>
                 </li>
 
                 <li class="pub-item">
-                    <span class="pub-title">"The Impact of The Gig Economy on the Product Quality through the Labor Market: Evidence from Ridesharing and Restaurant Quality"</span><br>
+                    <span class="pub-title">"The Impact of The Gig Economy on the Product Quality through the Labor Market: Evidence from Ridesharing and Restaurant Quality"</span>
                     <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jiwoong Shin, Soheil Ghili, & Jaehwan Kim</span><br>
                     <span class="pub-journal"><strong>Management Science</strong></span>, 2023.
                     <div class="media-block">
-                        <span class="media-label">Policy & Media:</span> National Affairs, The Boston Globe, Yale Insights, Association of American Universities, Yale Alumni Magazine, Tasting Table.
+                        <strong>Policy & Media:</strong> National Affairs, The Boston Globe, Yale Insights, Yale Alumni Magazine.
                     </div>
                 </li>
             </ul>
@@ -444,19 +421,18 @@
             <h2 class="section-title">Working Papers</h2>
             <ul class="pub-list">
                 <li class="pub-item">
-                    <span class="pub-title">"Personalized dynamic price promotion in storable goods markets: A Structured Reinforcement Learning Approach"</span><br>
+                    <span class="pub-title">"Personalized dynamic price promotion in storable goods markets: A Structured Reinforcement Learning Approach"</span>
                     <span class="pub-authors">Junyi Dong, Yanzhi Li, & <span class="me">Minkyu Shin</span></span><br>
                     <span class="pub-journal">Marketing Science</span>, Under Review.
                 </li>
 
                 <li class="pub-item">
-                    <span class="pub-title">"The Social Side of Shopping: How Groups Influence Consumer Behavior in Malls"</span><br>
+                    <span class="pub-title">"The Social Side of Shopping: How Groups Influence Consumer Behavior in Malls"</span>
                     <span class="pub-authors">He Sun, <span class="me">Minkyu Shin</span>, Jiwoong Shin, & Ravi Dhar</span>
                 </li>
 
-                               
                  <li class="pub-item">
-                    <span class="pub-title">"Strategic Novelty in the Age of Superhuman AI: Theory and Empirics"</span><br>
+                    <span class="pub-title">"Strategic Novelty in the Age of Superhuman AI: Theory and Empirics"</span>
                     <span class="pub-authors"><span class="me">Minkyu Shin</span></span>
                 </li>
             </ul>
@@ -464,52 +440,26 @@
 
         <section id="teaching">
             <h2 class="section-title">Teaching</h2>
-            
-            <h3>City University of Hong Kong (Instructor)</h3>
-            <table class="teaching-table">
-                <thead>
-                    <tr>
-                        <th>Course</th>
-                        <th>Level</th>
-                        <th>Year</th>
-                        <th>Evaluation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Strategic Marketing</td>
-                        <td>Undergraduate</td>
-                        <td>2025</td>
-                        <td>4.64 / 5.0</td>
-                    </tr>
-                    <tr>
-                        <td>Strategic Marketing</td>
-                        <td>Undergraduate</td>
-                        <td>2024</td>
-                        <td>4.52 / 5.0</td>
-                    </tr>
-                    <tr>
-                        <td>Strategic Marketing</td>
-                        <td>Undergraduate</td>
-                        <td>2023</td>
-                        <td>4.68 / 5.0</td>
-                    </tr>
-		    <tr>
-                        <td>Strategic Marketing</td>
-                        <td>Undergraduate</td>
-                        <td>2022</td>
-                        <td>Covid/Online</td>
-                    </tr>
-                    <tr>
-                        <td>Empirical Marketing Research</td>
-                        <td>Ph.D.</td>
-                        <td>2024</td>
-                        <td>4.93 / 5.0</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            
+            <h3>City University of Hong Kong</h3>
+            <div class="table-container">
+                <table class="teaching-table">
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Level</th>
+                            <th>Year</th>
+                            <th>Evaluation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Strategic Marketing</td><td>UG</td><td>2025</td><td>4.64 / 5.0</td></tr>
+                        <tr><td>Strategic Marketing</td><td>UG</td><td>2024</td><td>4.52 / 5.0</td></tr>
+                        <tr><td>Strategic Marketing</td><td>UG</td><td>2023</td><td>4.68 / 5.0</td></tr>
+                        <tr><td>Strategic Marketing</td><td>UG</td><td>2022</td><td>Online</td></tr>
+                        <tr><td>Empirical Marketing Research</td><td>Ph.D.</td><td>2024</td><td>4.93 / 5.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
     </main>
