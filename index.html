@@ -285,13 +285,27 @@
             text-decoration-color: #ccc;
         }
 
-        .media-block {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-left: 3px solid #ddd;
-            font-size: 0.9rem;
-            color: #555;
+        /* --- Media coverage (UPDATED: smaller + subtler) --- */
+        .media-block{
+            margin-top: 6px;              /* was 10px */
+            padding: 6px 10px;            /* was 10px */
+            background-color: #fbfbfb;     /* slightly lighter */
+            border-left: 2px solid #e5e7eb;/* thinner + lighter */
+            font-size: 0.82rem;            /* was 0.9rem */
+            line-height: 1.4;              /* tighter */
+            color: #666;                   /* slightly lighter */
+        }
+
+        .media-block strong{
+            font-weight: 600;              /* less heavy than default bold */
+        }
+
+        /* Optional: match the smaller tone for the briefing text */
+        .research-briefing{
+            margin-top: 6px;
+            font-size: 0.82rem;
+            line-height: 1.4;
+            color: #666;
         }
 
         /* --- Responsive Table --- */
@@ -343,7 +357,7 @@
 
         <div class="sidebar-links">
             <a href="mailto:minkshin@cityu.edu.hk" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://scholar.google.com/citations?user=K2Q3HlcAAAAJ&hl=en&oi=sra" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://scholar.google.com/citations?user=K2Q3HlcAAAAJ&hl=en&oi=sra" target="_blank" title="Google Scholar" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i></a>
         </div>
 	
         <div class="contact-info">
@@ -390,7 +404,7 @@
             <ul class="pub-list">
                 <li class="pub-item">
 				    <span class="pub-title">"The Adoption and Efficacy of Large Language Models in U.S. Consumer Financial Complaints."</span>
-				    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, & Jiwoong Shin</span><br>
+				    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, &amp; Jiwoong Shin</span><br>
 				    <span class="pub-journal"><strong>Nature Human Behaviour</strong></span>, forthcoming.
 				    <div class="media-block">
 				        <strong>Media:</strong> The Economist, International AI Safety Report, Yale Insights, Ground News, Tech Xplore.
@@ -401,27 +415,26 @@
 				</li>
                 
                 <li class="pub-item">
-                    <span class="pub-title"><a href="https://www.pnas.org/doi/abs/10.1073/pnas.2214840120" target="_blank">"Superhuman artificial intelligence can improve human decision-making by increasing novelty"</a></span>
-                    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, Bas van Opheusden, & Thomas L. Griffiths</span><br>
+                    <span class="pub-title"><a href="https://www.pnas.org/doi/abs/10.1073/pnas.2214840120" target="_blank" rel="noopener noreferrer">"Superhuman artificial intelligence can improve human decision-making by increasing novelty"</a></span>
+                    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, Bas van Opheusden, &amp; Thomas L. Griffiths</span><br>
                     <span class="pub-journal"><strong>PNAS</strong></span>, 2023.
                     <div class="media-block">
-                        <strong>Media:</strong> UNDP Human Development Report, Fortune, Forbes, Scientific American, and <a href="https://pnas.altmetric.com/details/143800783/news" target="_blank">click here to see more news coverage</a>.
+                        <strong>Media:</strong> UNDP Human Development Report, Fortune, Forbes, Scientific American, and <a href="https://pnas.altmetric.com/details/143800783/news" target="_blank" rel="noopener noreferrer">click here to see more news coverage</a>.
                     </div>
                 </li>
 
                 <li class="pub-item">
-                    <span class="pub-title"><a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2022.4481" target="_blank">"The Impact of The Gig Economy on the Product Quality through the Labor Market: Evidence from Ridesharing and Restaurant Quality"</a></span>
-                    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jiwoong Shin, Soheil Ghili, & Jaehwan Kim</span><br>
+                    <span class="pub-title"><a href="https://pubsonline.informs.org/doi/10.1287/mnsc.2022.4481" target="_blank" rel="noopener noreferrer">"The Impact of The Gig Economy on the Product Quality through the Labor Market: Evidence from Ridesharing and Restaurant Quality"</a></span>
+                    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jiwoong Shin, Soheil Ghili, &amp; Jaehwan Kim</span><br>
                     <span class="pub-journal"><strong>Management Science</strong></span>, 2023.
                     <div class="media-block">
                         <strong>Media:</strong> National Affairs, The Boston Globe, Yale Insights, Yale Alumni Magazine.
                     </div>
                 </li>
                 <li class="pub-item">
-                    <span class="pub-title"><a href="https://escholarship.org/uc/item/6q05n7pz" target="_blank">"Human learning from artificial intelligence: Evidence from human Go players' decisions after AlphaGo"</a></span>
-                    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, & Minkyung Kim</span><br>
+                    <span class="pub-title"><a href="https://escholarship.org/uc/item/6q05n7pz" target="_blank" rel="noopener noreferrer">"Human learning from artificial intelligence: Evidence from human Go players' decisions after AlphaGo"</a></span>
+                    <span class="pub-authors"><span class="me">Minkyu Shin</span>, Jin Kim, &amp; Minkyung Kim</span><br>
                     <span class="pub-journal"><strong>Proceedings of the Annual Meeting of the Cognitive Science Society</strong></span>, 2021.
-                    
                 </li>
 
             </ul>
@@ -432,13 +445,13 @@
             <ul class="pub-list">
                 <li class="pub-item">
                     <span class="pub-title">"Personalized dynamic price promotion in storable goods markets: A Structured Reinforcement Learning Approach"</span>
-                    <span class="pub-authors">Junyi Dong, Yanzhi Li, & <span class="me">Minkyu Shin</span></span><br>
+                    <span class="pub-authors">Junyi Dong, Yanzhi Li, &amp; <span class="me">Minkyu Shin</span></span><br>
                     <span class="pub-journal">Marketing Science</span>, Under Review.
                 </li>
 
                 <li class="pub-item">
                     <span class="pub-title">"The Social Side of Shopping: How Groups Influence Consumer Behavior in Malls"</span>
-                    <span class="pub-authors">He Sun, <span class="me">Minkyu Shin</span>, Jiwoong Shin, & Ravi Dhar</span>
+                    <span class="pub-authors">He Sun, <span class="me">Minkyu Shin</span>, Jiwoong Shin, &amp; Ravi Dhar</span>
                 </li>
 
                  <li class="pub-item">
@@ -447,6 +460,7 @@
                 </li>
             </ul>
         </section>
+
 		<section id="Work in progress">
             <h2 class="section-title">Work in progress</h2>
             <ul class="pub-list">
@@ -454,8 +468,6 @@
                     <span class="pub-title">"When Hallucination of LLMs Leads to Creative Idea"</span>
                     <span class="pub-authors"><span class="me">Minkyu Shin</span></span>, Jin Kim
                 </li>
-
-
             </ul>
         </section>
 		
@@ -487,10 +499,4 @@
 </div>
 
 </body>
-
 </html>
-
-
-
-
-
